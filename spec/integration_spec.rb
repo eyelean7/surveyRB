@@ -1,10 +1,16 @@
 require('spec_helper')
+require('capybara/rspec')
+require('./app')
+require('pry')
 
-# describe('survey') do
-#   it "allows designer to add a survey and add questions to that survey" do
-#     visit('/')
-#     fill_in('survey_title').with('how are we doing')
-#     click_button('submit')
-#     expect(page).to have_content('How Are We Doing')
-#   end
-# end
+Capybara.app = Sinatra::Application
+set(:show_exceptions, false)
+describe('survey', {:type => :feature}) do
+  it "allows designer to add a survey and add questions to that survey" do
+    visit('/')
+    click_link('Add Survey')
+    fill_in('survey_title', :with=>'how are we doing')
+    click_button('Submit')
+    expect(page).to have_content('How Are We Doing')
+  end
+end
