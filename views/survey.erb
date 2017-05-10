@@ -1,7 +1,5 @@
-<h1>Here are your surveys:</h1>
-
-<ul>
-  <% @surveys.each() do |survey| %>
-  <li><a href="<%= survey.id() %>"><%= survey.name() %></a></li>
-  <% end %>
-</ul>
+<h1><%= @survey.name() %></h1>
+<form class="" action="/survey/<%= @survey.id() %>/questions" method="post">
+  <input type="hidden" name="" value="@survey.id()">
+  <button type="submit" name="button">Add Question</button>
+</form>

@@ -12,5 +12,7 @@ describe('survey', {:type => :feature}) do
     fill_in('survey_title', :with=>'how are we doing')
     click_button('Submit')
     expect(page).to have_content('How Are We Doing')
+    click_link('How Are We Doing')
+    expect(page).to have_content('How Are We Doing')
   end
 end
